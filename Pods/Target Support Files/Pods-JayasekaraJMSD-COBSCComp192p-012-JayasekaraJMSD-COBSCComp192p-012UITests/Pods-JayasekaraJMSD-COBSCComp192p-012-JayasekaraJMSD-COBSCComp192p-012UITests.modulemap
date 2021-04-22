@@ -1,0 +1,6 @@
+framework module Pods_JayasekaraJMSD_COBSCComp192p_012_JayasekaraJMSD_COBSCComp192p_012UITests {
+  umbrella header "Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

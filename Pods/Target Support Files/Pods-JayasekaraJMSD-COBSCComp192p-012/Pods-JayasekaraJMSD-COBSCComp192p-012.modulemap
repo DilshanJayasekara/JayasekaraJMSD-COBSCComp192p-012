@@ -1,0 +1,6 @@
+framework module Pods_JayasekaraJMSD_COBSCComp192p_012 {
+  umbrella header "Pods-JayasekaraJMSD-COBSCComp192p-012-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1090387411713-dl9n1o0gvg1mb4k8gupjglgmhpq7ttqk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1090387411713-dl9n1o0gvg1mb4k8gupjglgmhpq7ttqk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCjGSx3iiC-9RxzuXwd3Z9dFBxEh9ek5Qo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1090387411713</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.nibm.JayasekaraJMSD-COBSCComp192p-012</string>
+	<key>PROJECT_ID</key>
+	<string>nibmcafetaria</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nibmcafetaria.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1090387411713:ios:aa5cb1b3e842f78b9fd100</string>
+	<key>DATABASE_URL</key>
+	<string>https://nibmcafetaria-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
