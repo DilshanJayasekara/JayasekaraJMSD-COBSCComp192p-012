@@ -3,12 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		169933A3AB18E9648C5D7871 /* Pods_JayasekaraJMSD_COBSCComp192p_012.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EC9115ADD5D607E9E79DD4 /* Pods_JayasekaraJMSD_COBSCComp192p_012.framework */; };
 		5423CFE25DF7FC15D65ACF0F /* Pods_JayasekaraJMSD_COBSCComp192p_012_JayasekaraJMSD_COBSCComp192p_012UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED994FE2DC8C97C23F59373 /* Pods_JayasekaraJMSD_COBSCComp192p_012_JayasekaraJMSD_COBSCComp192p_012UITests.framework */; };
+		8A444AB226315330000986F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A444AB126315330000986F8 /* LoginViewController.swift */; };
+		8A444ABA263153E3000986F8 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A444AB9263153E3000986F8 /* RegisterViewController.swift */; };
 		8A7D234A26313CB1009F24E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D234926313CB1009F24E6 /* AppDelegate.swift */; };
 		8A7D234C26313CB1009F24E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D234B26313CB1009F24E6 /* SceneDelegate.swift */; };
 		8A7D234E26313CB1009F24E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D234D26313CB1009F24E6 /* ViewController.swift */; };
@@ -46,6 +48,8 @@
 		5C3E326C7E469F6E30ACA239 /* Pods-JayasekaraJMSD-COBSCComp192p-012.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JayasekaraJMSD-COBSCComp192p-012.release.xcconfig"; path = "Target Support Files/Pods-JayasekaraJMSD-COBSCComp192p-012/Pods-JayasekaraJMSD-COBSCComp192p-012.release.xcconfig"; sourceTree = "<group>"; };
 		78A48D5BEB9D378B29FCCEF8 /* Pods-JayasekaraJMSD-COBSCComp192p-012Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JayasekaraJMSD-COBSCComp192p-012Tests.release.xcconfig"; path = "Target Support Files/Pods-JayasekaraJMSD-COBSCComp192p-012Tests/Pods-JayasekaraJMSD-COBSCComp192p-012Tests.release.xcconfig"; sourceTree = "<group>"; };
 		83F81A1D1B0FF0E37F9DBEBB /* Pods-JayasekaraJMSD-COBSCComp192p-012.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JayasekaraJMSD-COBSCComp192p-012.debug.xcconfig"; path = "Target Support Files/Pods-JayasekaraJMSD-COBSCComp192p-012/Pods-JayasekaraJMSD-COBSCComp192p-012.debug.xcconfig"; sourceTree = "<group>"; };
+		8A444AB126315330000986F8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8A444AB9263153E3000986F8 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		8A7D234626313CB1009F24E6 /* JayasekaraJMSD-COBSCComp192p-012.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JayasekaraJMSD-COBSCComp192p-012.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7D234926313CB1009F24E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A7D234B26313CB1009F24E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,7 +111,6 @@
 				C7348F120A787C429F4C38E9 /* Pods-JayasekaraJMSD-COBSCComp192p-012Tests.debug.xcconfig */,
 				78A48D5BEB9D378B29FCCEF8 /* Pods-JayasekaraJMSD-COBSCComp192p-012Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -119,6 +122,46 @@
 				21E116EFB9AED7C55EEE0818 /* Pods_JayasekaraJMSD_COBSCComp192p_012Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8A444AAA263152A6000986F8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8A7D234D26313CB1009F24E6 /* ViewController.swift */,
+				8A444AB126315330000986F8 /* LoginViewController.swift */,
+				8A444AB9263153E3000986F8 /* RegisterViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8A444AAB263152C1000986F8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8A444AAC263152EA000986F8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8A444AAD26315304000986F8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A7D234F26313CB1009F24E6 /* Main.storyboard */,
+				8A7D235726313CB2009F24E6 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8A444AE026317E5C000986F8 /* SubController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubController;
 			sourceTree = "<group>";
 		};
 		8A7D233D26313CB1009F24E6 = {
@@ -146,13 +189,15 @@
 		8A7D234826313CB1009F24E6 /* JayasekaraJMSD-COBSCComp192p-012 */ = {
 			isa = PBXGroup;
 			children = (
+				8A444AE026317E5C000986F8 /* SubController */,
+				8A444AAD26315304000986F8 /* View */,
+				8A444AAC263152EA000986F8 /* Services */,
+				8A444AAB263152C1000986F8 /* Model */,
+				8A444AAA263152A6000986F8 /* Controller */,
 				8A7D238226313D12009F24E6 /* GoogleService-Info.plist */,
 				8A7D234926313CB1009F24E6 /* AppDelegate.swift */,
 				8A7D234B26313CB1009F24E6 /* SceneDelegate.swift */,
-				8A7D234D26313CB1009F24E6 /* ViewController.swift */,
-				8A7D234F26313CB1009F24E6 /* Main.storyboard */,
 				8A7D235526313CB2009F24E6 /* Assets.xcassets */,
-				8A7D235726313CB2009F24E6 /* LaunchScreen.storyboard */,
 				8A7D235A26313CB2009F24E6 /* Info.plist */,
 				8A7D235226313CB1009F24E6 /* JayasekaraJMSD_COBSCComp192p_012.xcdatamodeld */,
 			);
@@ -421,6 +466,8 @@
 				8A7D234E26313CB1009F24E6 /* ViewController.swift in Sources */,
 				8A7D235426313CB1009F24E6 /* JayasekaraJMSD_COBSCComp192p_012.xcdatamodeld in Sources */,
 				8A7D234A26313CB1009F24E6 /* AppDelegate.swift in Sources */,
+				8A444ABA263153E3000986F8 /* RegisterViewController.swift in Sources */,
+				8A444AB226315330000986F8 /* LoginViewController.swift in Sources */,
 				8A7D234C26313CB1009F24E6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
