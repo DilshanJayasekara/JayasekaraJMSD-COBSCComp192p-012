@@ -15,7 +15,6 @@ target 'JayasekaraJMSD-COBSCComp192p-012' do
   target 'JayasekaraJMSD-COBSCComp192p-012UITests' do
     # Pods for testing
   end
-pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'Firebase/Database'
