@@ -21,6 +21,8 @@
 		8A7D235926313CB2009F24E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D235726313CB2009F24E6 /* LaunchScreen.storyboard */; };
 		8A7D236426313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D236326313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012Tests.swift */; };
 		8A7D236F26313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D236E26313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012UITests.swift */; };
+		8A89C24C26368A050092ABAB /* AddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A89C24B26368A050092ABAB /* AddFoodViewController.swift */; };
+		8AA32D132637217200F4F48E /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA32D122637217200F4F48E /* CheckBox.swift */; };
 		8ACBA5D22632E4C3003CA4EA /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACBA5D12632E4C3003CA4EA /* StoreViewController.swift */; };
 		E066F92A5E9B7BCC26796F34 /* Pods_JayasekaraJMSD_COBSCComp192p_012Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21E116EFB9AED7C55EEE0818 /* Pods_JayasekaraJMSD_COBSCComp192p_012Tests.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +65,8 @@
 		8A7D236A26313CB2009F24E6 /* JayasekaraJMSD-COBSCComp192p-012UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JayasekaraJMSD-COBSCComp192p-012UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7D236E26313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JayasekaraJMSD_COBSCComp192p_012UITests.swift; sourceTree = "<group>"; };
 		8A7D237026313CB2009F24E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A89C24B26368A050092ABAB /* AddFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodViewController.swift; sourceTree = "<group>"; };
+		8AA32D122637217200F4F48E /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CheckBox.swift; path = "JayasekaraJMSD-COBSCComp192p-012/Controller/CheckBox.swift"; sourceTree = SOURCE_ROOT; };
 		8ACBA5D12632E4C3003CA4EA /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		BF86D99C671E48E80CE790A0 /* Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests.debug.xcconfig"; path = "Target Support Files/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7348F120A787C429F4C38E9 /* Pods-JayasekaraJMSD-COBSCComp192p-012Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JayasekaraJMSD-COBSCComp192p-012Tests.debug.xcconfig"; path = "Target Support Files/Pods-JayasekaraJMSD-COBSCComp192p-012Tests/Pods-JayasekaraJMSD-COBSCComp192p-012Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			children = (
 				8A7D234D26313CB1009F24E6 /* ViewController.swift */,
 				8ACBA5D12632E4C3003CA4EA /* StoreViewController.swift */,
+				8A89C24B26368A050092ABAB /* AddFoodViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 		8A444AAB263152C1000986F8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8AA32D122637217200F4F48E /* CheckBox.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,13 +158,6 @@
 				8A7D235726313CB2009F24E6 /* LaunchScreen.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		8A444AE026317E5C000986F8 /* SubController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SubController;
 			sourceTree = "<group>";
 		};
 		8A7D233D26313CB1009F24E6 = {
@@ -187,7 +186,6 @@
 		8A7D234826313CB1009F24E6 /* JayasekaraJMSD-COBSCComp192p-012 */ = {
 			isa = PBXGroup;
 			children = (
-				8A444AE026317E5C000986F8 /* SubController */,
 				8A444AAD26315304000986F8 /* View */,
 				8A444AAC263152EA000986F8 /* Services */,
 				8A444AAB263152C1000986F8 /* Model */,
@@ -230,7 +228,7 @@
 				8A7D234226313CB1009F24E6 /* Sources */,
 				8A7D234326313CB1009F24E6 /* Frameworks */,
 				8A7D234426313CB1009F24E6 /* Resources */,
-				61BE41AFD4A4E0E7DF0B7028 /* [CP] Embed Pods Frameworks */,
+				707547A0BCD7A28970D8C6BB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -268,7 +266,7 @@
 				8A7D236626313CB2009F24E6 /* Sources */,
 				8A7D236726313CB2009F24E6 /* Frameworks */,
 				8A7D236826313CB2009F24E6 /* Resources */,
-				087A2B67DAE07DD59FBA523F /* [CP] Embed Pods Frameworks */,
+				DBC2A97D300BEFC998063712 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,24 +351,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		087A2B67DAE07DD59FBA523F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		61BE41AFD4A4E0E7DF0B7028 /* [CP] Embed Pods Frameworks */ = {
+		707547A0BCD7A28970D8C6BB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -431,6 +412,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DBC2A97D300BEFC998063712 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DC7BF4D1AA08B095D66ED85B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -463,7 +461,9 @@
 				8A7D234E26313CB1009F24E6 /* ViewController.swift in Sources */,
 				8A7D235426313CB1009F24E6 /* JayasekaraJMSD_COBSCComp192p_012.xcdatamodeld in Sources */,
 				8A7D234A26313CB1009F24E6 /* AppDelegate.swift in Sources */,
+				8AA32D132637217200F4F48E /* CheckBox.swift in Sources */,
 				8A7D234C26313CB1009F24E6 /* SceneDelegate.swift in Sources */,
+				8A89C24C26368A050092ABAB /* AddFoodViewController.swift in Sources */,
 				8ACBA5D22632E4C3003CA4EA /* StoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -651,7 +651,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nibm.JayasekaraJMSD-COBSCComp192p-012";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -671,7 +671,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nibm.JayasekaraJMSD-COBSCComp192p-012";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
