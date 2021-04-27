@@ -21,9 +21,11 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
             if(btnclick%2 == 1)
             {
                 btnAdd.isEnabled = true;
+                self.btnAdd.alpha = 1.0
             }
             else{
                 btnAdd.isEnabled = false;
+                self.btnAdd.alpha = 0.5
             }
         btnclick = btnclick + 1;
     }
@@ -45,34 +47,21 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
     var randomInt = Int.random(in: 1000..<10000)
     var imageURL = ""
     private let storage = Storage.storage().reference()
+    
+    //View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         //tab action to Image Viewer
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
             FoodImage.isUserInteractionEnabled = true
             FoodImage.addGestureRecognizer(tapGestureRecognizer)
-        
-       /* guard let urlString = UserDefaults.standard.value(forKey: "url") as? String,
-               let url = URL(string: urlString)else {
-             return
-         }
-         let task = URLSession.shared.dataTask(with: url, completionHandler: {data, _, error in
-             guard let data = data, error == nil else {
-                 return
-             }
-             DispatchQueue.main.async {
-                 let image = UIImage(data: data)
-                 self.FoodImage.image = image
-             }
-         })
-         task.resume()
-        */
         // Do any additional setup after loading the view.
               self.pvCategory.delegate = self
               self.pvCategory.dataSource = self
         //picker data
         pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
         btnAdd.isEnabled = false;
+        self.btnAdd.alpha = 0.5
     }
     
     
@@ -115,6 +104,8 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
 
         // Your action
     }
+    
+    //Add food to database
     func AddFood(){
         foodName    = self.txtName.text ??  "";
         foodDesc    = self.txtDescription.text ?? "";
@@ -130,6 +121,7 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
             "discount":self.foodDisc])
     }
     
+    //Insert Image to fire Store
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
             picker.dismiss(animated: true, completion: nil)
             guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else{
@@ -162,6 +154,9 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
           picker.dismiss(animated: true, completion: nil)
       }
+    func validation()->Bool{
+        return true;
+    }
     /*
     // MARK: - Navigation
 

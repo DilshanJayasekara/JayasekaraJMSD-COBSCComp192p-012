@@ -23,6 +23,8 @@
 		8A7D236F26313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D236E26313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012UITests.swift */; };
 		8A89C24C26368A050092ABAB /* AddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A89C24B26368A050092ABAB /* AddFoodViewController.swift */; };
 		8AA32D132637217200F4F48E /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA32D122637217200F4F48E /* CheckBox.swift */; };
+		8AA32D182637D59C00F4F48E /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA32D172637D59C00F4F48E /* CategoryTableViewCell.swift */; };
+		8AA32D252637DB4400F4F48E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA32D242637DB4400F4F48E /* CategoryViewController.swift */; };
 		8ACBA5D22632E4C3003CA4EA /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACBA5D12632E4C3003CA4EA /* StoreViewController.swift */; };
 		E066F92A5E9B7BCC26796F34 /* Pods_JayasekaraJMSD_COBSCComp192p_012Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21E116EFB9AED7C55EEE0818 /* Pods_JayasekaraJMSD_COBSCComp192p_012Tests.framework */; };
 /* End PBXBuildFile section */
@@ -67,6 +69,8 @@
 		8A7D237026313CB2009F24E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A89C24B26368A050092ABAB /* AddFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodViewController.swift; sourceTree = "<group>"; };
 		8AA32D122637217200F4F48E /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CheckBox.swift; path = "JayasekaraJMSD-COBSCComp192p-012/Controller/CheckBox.swift"; sourceTree = SOURCE_ROOT; };
+		8AA32D172637D59C00F4F48E /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryTableViewCell.swift; path = "JayasekaraJMSD-COBSCComp192p-012/Controller/CategoryTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		8AA32D242637DB4400F4F48E /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		8ACBA5D12632E4C3003CA4EA /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		BF86D99C671E48E80CE790A0 /* Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests.debug.xcconfig"; path = "Target Support Files/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests/Pods-JayasekaraJMSD-COBSCComp192p-012-JayasekaraJMSD-COBSCComp192p-012UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7348F120A787C429F4C38E9 /* Pods-JayasekaraJMSD-COBSCComp192p-012Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JayasekaraJMSD-COBSCComp192p-012Tests.debug.xcconfig"; path = "Target Support Files/Pods-JayasekaraJMSD-COBSCComp192p-012Tests/Pods-JayasekaraJMSD-COBSCComp192p-012Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 				8A7D234D26313CB1009F24E6 /* ViewController.swift */,
 				8ACBA5D12632E4C3003CA4EA /* StoreViewController.swift */,
 				8A89C24B26368A050092ABAB /* AddFoodViewController.swift */,
+				8AA32D242637DB4400F4F48E /* CategoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				8AA32D122637217200F4F48E /* CheckBox.swift */,
+				8AA32D172637D59C00F4F48E /* CategoryTableViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -465,6 +471,8 @@
 				8A7D234C26313CB1009F24E6 /* SceneDelegate.swift in Sources */,
 				8A89C24C26368A050092ABAB /* AddFoodViewController.swift in Sources */,
 				8ACBA5D22632E4C3003CA4EA /* StoreViewController.swift in Sources */,
+				8AA32D252637DB4400F4F48E /* CategoryViewController.swift in Sources */,
+				8AA32D182637D59C00F4F48E /* CategoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
