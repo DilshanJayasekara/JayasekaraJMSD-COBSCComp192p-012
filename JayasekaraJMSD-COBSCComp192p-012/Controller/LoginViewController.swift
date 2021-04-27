@@ -2,58 +2,67 @@
 //  LoginViewController.swift
 //  JayasekaraJMSD-COBSCComp192p-012
 //
-//  Created by Dilshan Jayasekara on 2021-04-22.
+//  Created by Dilshan Jayasekara on 2021-04-27.
 //
 
 import UIKit
-import Firebase
-import SPAlert
+import FirebaseAuth
 class LoginViewController: UIViewController {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
-    @IBAction func btnLoginClick(_ sender: Any) {
-        SignIn()
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    func SignIn(){
-        Auth.auth().signIn(withEmail: txtEmail.text!, password: txtPassword.text!) { (authResult, error) in
-            if let error = error as NSError? {
-            switch AuthErrorCode(rawValue: error.code) {
-            case .operationNotAllowed:
-              
-              // Error: Indicates that email and password accounts are not enabled. Enable them in the Auth section of the Firebase console.
-                SPAlert.present(title: "Error", message: "Email is not allowed..!", preset: .custom(UIImage.init(named: "Error")!))
-                break
-            case .userDisabled:
-              // Error: The user account has been disabled by an administrator.
-                SPAlert.present(title: "Error", message: "The user account has been disabled by an administrator.", preset: .custom(UIImage.init(named: "Error")!))
-                
-            break
-            case .invalidEmail:
-                SPAlert.present(title: "Error", message: "The email address is badly formatted.", preset: .custom(UIImage.init(named: "Error")!))
-            break
-            case .wrongPassword:
-              // Error: The password is invalid or the user does not have a password.
-                SPAlert.present(title: "Error", message: "The user name or password is invalid ", preset: .custom(UIImage.init(named: "Error")!))
-            break
-            
-            default:
-                SPAlert.present(title: "Error", message: "\(error.localizedDescription)", preset: .custom(UIImage.init(named: "Error")!))
-                print("Error: \(error.localizedDescription)")
-            }
-          } else {
-            //self.getDetails()
-           SPAlert.present(title: "Message", message: "User signs in successfully..!", preset: .custom(UIImage.init(named: "correct")!))
-          
-            self.performSegue(withIdentifier: "SignIntoHome", sender: nil)
-          }
+    
+    @IBAction func btnClickLogin(_ sender: Any) {
+        if(validateLogin()){
+            checkLogin();
+        }
     }
-}
- 
+    
+    @IBAction func btnClickRegister(_ sender: Any) {
+        
+    }
+    @IBAction func btnClickForgetPassword(_ sender: Any) {
+        
+    }
+    
+    func validateLogin()-> Bool{
+        if txtEmail.text == ""{
+            let alert = UIAlertController(title: "Error", message: "Please Check Your Email and Password", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false;
+        }else if txtPassword.text == ""{
+            let alert = UIAlertController(title: "Error", message: "Please Check Your Email and Password", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    func   checkLogin(){
+        Auth.auth().signIn(withEmail: txtEmail.text!, password: txtPassword.text!) { [weak self] authResult, error in
+            guard self != nil else {return}
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            if Auth.auth().currentUser != nil {
+                print(Auth.auth().currentUser?.uid ?? "")
+                self!.performSegue(withIdentifier: "SignIntoHome", sender: nil)
+            }else{
+                let alert = UIAlertController(title: "Error", message: "Please Check Your Email and Password", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self?.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 

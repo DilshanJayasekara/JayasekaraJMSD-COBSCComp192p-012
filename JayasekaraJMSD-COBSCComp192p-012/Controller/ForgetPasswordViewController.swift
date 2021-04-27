@@ -1,5 +1,5 @@
 //
-//  RegisterViewController.swift
+//  ForgetPasswordViewController.swift
 //  JayasekaraJMSD-COBSCComp192p-012
 //
 //  Created by Dilshan Jayasekara on 2021-04-27.
@@ -7,24 +7,15 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
-    @IBOutlet weak var txtEmail: UITextField!
-    
-    @IBOutlet weak var txtMobile: UITextField!
-    @IBOutlet weak var txtPassword: UITextField!
-    
+class ForgetPasswordViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
     }
     
-    @IBAction func btnClickRegister(_ sender: Any) {
-    }
-    
-    @IBAction func btnClickLog(_ sender: Any) {
-        self.dismiss(animated: true,completion: nil)
-    }
-    @IBAction func btnClickForget(_ sender: Any) {
-    }
+
     /*
     // MARK: - Navigation
 
