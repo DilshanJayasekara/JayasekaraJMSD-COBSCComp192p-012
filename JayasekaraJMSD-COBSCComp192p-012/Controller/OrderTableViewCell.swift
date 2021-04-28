@@ -1,15 +1,17 @@
 //
-//  CategoryTableViewCell.swift
+//  OrderTableViewCell.swift
 //  JayasekaraJMSD-COBSCComp192p-012
 //
-//  Created by Dilshan Jayasekara on 2021-04-27.
+//  Created by Dilshan Jayasekara on 2021-04-28.
 //
 
 import UIKit
 
-class CategoryTableViewCell: UITableViewCell {    
+class OrderTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblCategoryName: UILabel!
+    @IBOutlet weak var lblOrderId: UILabel!
+    @IBOutlet weak var lblCustomerName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

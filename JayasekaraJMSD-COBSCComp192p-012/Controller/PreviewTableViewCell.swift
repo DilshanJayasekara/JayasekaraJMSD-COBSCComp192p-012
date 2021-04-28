@@ -1,5 +1,5 @@
 //
-//  CategoryTableViewCell.swift
+//  PreviewTableViewCell.swift
 //  JayasekaraJMSD-COBSCComp192p-012
 //
 //  Created by Dilshan Jayasekara on 2021-04-27.
@@ -7,9 +7,17 @@
 
 import UIKit
 
-class CategoryTableViewCell: UITableViewCell {    
-
-    @IBOutlet weak var lblCategoryName: UILabel!
+class PreviewTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var imgViewFood: UIImageView!
+    
+    @IBOutlet weak var lblFoodName: UILabel!
+    @IBOutlet weak var lblDescription: UILabel!
+    
+    @IBOutlet weak var lblPrice: UILabel!
+    @IBOutlet weak var lblDiscount: UILabel!
+    @IBOutlet weak var switchActive: UISwitch!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+
 class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var txtName: UITextField!
     
@@ -36,9 +37,9 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
     var foodDisc    = ""
     var foodPrice   = ""
     var foodCategory = ""
-    
-    var pickerData: [String] = [String]()
-    
+    var foodCategoryId = ""
+    var categories = [Category]()
+
     @IBAction func btnClickAdd(_ sender: Any) {
         AddFood();
     }
@@ -51,6 +52,8 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
     //View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
+        //get Category
+        getCatogaryDetails()
         //tab action to Image Viewer
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
             FoodImage.isUserInteractionEnabled = true
@@ -59,7 +62,6 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
               self.pvCategory.delegate = self
               self.pvCategory.dataSource = self
         //picker data
-        pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
         btnAdd.isEnabled = false;
         self.btnAdd.alpha = 0.5
     }
@@ -77,17 +79,18 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         // The number of rows of data
         func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) ->Int {
-            return pickerData.count
+            return categories.count
         }
         
         // The data to return fopr the row and component (column) that's being passed in
         func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            return pickerData[row]
+            return categories[row].CategoryName;
         }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView {
                case pvCategory:
-        self.foodCategory =  pickerData[row]// This gives only the row value but  need string value*
+                self.foodCategory = categories[row].CategoryName ?? ""// This gives only the row value but  need string value*
+                self.foodCategoryId = categories[row].CategoryId ?? ""
                 break;
         default: break
             
@@ -104,6 +107,30 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
 
         // Your action
     }
+    //Get Category Details
+    func getCatogaryDetails() {
+        
+        let ref = Database.database().reference()
+        ref.child("Categories").observe(.value, with:{
+            (snapshot) in
+                        
+            if let data = snapshot.value {
+                if let categoryItems = data as? [String: Any]{
+                    self.categories.removeAll();
+                    for itemInfo in categoryItems {
+                        if let foodInfo = itemInfo.value as? [String: Any]{
+                            let singleCategory = Category(
+                                CategoryId: itemInfo.key, CategoryName: foodInfo["CategoryName"] as? String)
+                                    self.categories.append(singleCategory)
+                                    }
+                                }
+                    self.pvCategory.reloadAllComponents();
+                               
+                          }
+                    }
+             })
+}
+
     
     //Add food to database
     func AddFood(){
@@ -112,13 +139,14 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
         foodDisc    = self.txtDiscount.text ?? "";
         foodPrice   = self.txtPrice.text ?? "";
     
-        self.ref.child("foods").child("0766414584").child("\(randomInt)").setValue(
+        self.ref.child("foods").child("\(foodCategoryId)").child("\(randomInt)").setValue(
             ["foodName": self.foodName,
              "description": self.foodDesc,
-             "Price": self.foodPrice,
+             "price": self.foodPrice,
              "image": self.imageURL,
              "category": self.foodCategory,
-            "discount":self.foodDisc])
+            "discount":self.foodDisc,
+            "status":"Active"])
     }
     
     //Insert Image to fire Store
@@ -130,13 +158,13 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
             guard let imageData = image.pngData() else {
                 return
             }
-        storage.child("foods/0766414584").child("\(self.randomInt)").child("image.png").putData(imageData, metadata: nil, completion: { _, error in
+        storage.child("foods").child("\(self.randomInt)").child("image.png").putData(imageData, metadata: nil, completion: { _, error in
                 guard error == nil else {
                     print("Faild to Upload")
                     return
                 }
                 print("Upload Success")
-                self.storage.child("foods/0766414584").child("\(self.randomInt)").child("image.png").downloadURL(completion: {url, error in
+                self.storage.child("foods").child("\(self.randomInt)").child("image.png").downloadURL(completion: {url, error in
                     guard let url = url, error == nil else{
                         return
                     }

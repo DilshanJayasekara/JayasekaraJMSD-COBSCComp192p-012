@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rg8-lh-cOJ">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -114,7 +114,7 @@
         <!--ORDER-->
         <scene sceneID="bXr-9S-yQX">
             <objects>
-                <viewController id="B5F-VY-sGg" sceneMemberID="viewController">
+                <viewController id="B5F-VY-sGg" customClass="OrderViewController" customModule="JayasekaraJMSD_COBSCComp192p_012" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JD0-Wk-scw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,7 +124,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="102" id="fa4-NV-p54">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderCell" rowHeight="102" id="fa4-NV-p54" customClass="OrderTableViewCell" customModule="JayasekaraJMSD_COBSCComp192p_012" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fa4-NV-p54" id="KYs-Pk-Ae7">
@@ -162,7 +162,7 @@
                                                     </state>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="50"/>
+                                                            <integer key="value" value="40"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
@@ -180,7 +180,7 @@
                                                     </state>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="50"/>
+                                                            <integer key="value" value="40"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
@@ -203,6 +203,10 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="lblCustomerName" destination="VfV-tg-xIb" id="zi7-qa-gcJ"/>
+                                            <outlet property="lblOrderId" destination="B4m-kT-zfa" id="4Vx-Be-eWD"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -211,6 +215,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="ORDER" id="tyl-Zq-PyJ"/>
+                    <connections>
+                        <outlet property="tblOrderView" destination="WNA-wL-g0b" id="B4y-UV-0c6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lN-4v-EqM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -351,7 +358,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="HtH-aQ-GmB"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -415,6 +422,7 @@
                         <outlet property="txtEmail" destination="L4N-jS-Kjd" id="s9j-uW-stu"/>
                         <outlet property="txtMobile" destination="pIH-Jn-RzF" id="vFh-dM-iE8"/>
                         <outlet property="txtPassword" destination="AHP-4a-Wc2" id="tfg-HR-X7V"/>
+                        <segue destination="ZAy-7q-hXy" kind="presentation" identifier="SingUpToHome" modalPresentationStyle="fullScreen" id="CO7-qZ-bDM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lDR-HF-XOZ" sceneMemberID="firstResponder"/>
@@ -478,20 +486,20 @@
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1w6-eZ-2W1">
-                                                            <rect key="frame" x="0.0" y="28" width="375" height="51"/>
+                                                            <rect key="frame" x="0.0" y="28" width="375" height="51.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1w6-eZ-2W1" id="DqR-eT-q6M">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdR-hg-Bi4">
-                                                                        <rect key="frame" x="24" y="15" width="46" height="21"/>
+                                                                        <rect key="frame" x="24" y="15" width="46" height="21.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggr-Rf-vgy">
-                                                                        <rect key="frame" x="328" y="15" width="39" height="21"/>
+                                                                        <rect key="frame" x="328" y="15" width="39" height="21.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -573,10 +581,10 @@
             </objects>
             <point key="canvasLocation" x="893.60000000000002" y="2400.4497751124441"/>
         </scene>
-        <!--View Controller-->
+        <!--Preview View Controller-->
         <scene sceneID="B38-VS-KxT">
             <objects>
-                <viewController id="SRM-xy-dXa" sceneMemberID="viewController">
+                <viewController id="SRM-xy-dXa" customClass="PreviewViewController" customModule="JayasekaraJMSD_COBSCComp192p_012" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JnX-yH-ogJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="579"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -585,7 +593,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="579"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="W4V-Xd-NDS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PreviewCell" rowHeight="100" id="W4V-Xd-NDS" customClass="PreviewTableViewCell" customModule="JayasekaraJMSD_COBSCComp192p_012" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W4V-Xd-NDS" id="dX0-58-gkB">
@@ -654,11 +662,23 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="Rrz-Ix-2Ic" secondAttribute="trailing" constant="-2" id="gbj-Rp-aZA"/>
                                                 <constraint firstItem="7s0-kb-xvo" firstAttribute="leading" secondItem="3Xm-T9-n8L" secondAttribute="leading" id="utn-SE-c49"/>
                                                 <constraint firstItem="7s0-kb-xvo" firstAttribute="top" secondItem="3Xm-T9-n8L" secondAttribute="bottom" constant="15" id="wbK-x7-ro5"/>
-                                                <constraint firstItem="zaU-AK-Frb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5GP-9c-24T" secondAttribute="trailing" symbolic="YES" id="zCl-Vz-IK3"/>
+                                                <constraint firstItem="zaU-AK-Frb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5GP-9c-24T" secondAttribute="trailing" constant="8" symbolic="YES" id="zCl-Vz-IK3"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgViewFood" destination="5GP-9c-24T" id="l2a-fL-yEz"/>
+                                            <outlet property="lblDescription" destination="3Xm-T9-n8L" id="vCr-Xi-K2K"/>
+                                            <outlet property="lblDiscount" destination="hMQ-Dz-Q6N" id="a7D-lM-fEJ"/>
+                                            <outlet property="lblFoodName" destination="zaU-AK-Frb" id="Wwj-FX-cR6"/>
+                                            <outlet property="lblPrice" destination="7s0-kb-xvo" id="fmU-B8-MXG"/>
+                                            <outlet property="switchActive" destination="Rrz-Ix-2Ic" id="r8C-1W-x7k"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="SRM-xy-dXa" id="dsR-Wc-Qda"/>
+                                    <outlet property="delegate" destination="SRM-xy-dXa" id="87M-mE-0Dl"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sl1-tf-5oS"/>
@@ -670,6 +690,9 @@
                             <constraint firstItem="sl1-tf-5oS" firstAttribute="trailing" secondItem="Bzn-PZ-bUO" secondAttribute="trailing" id="nzY-qG-7VP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tblPreviewView" destination="Bzn-PZ-bUO" id="tem-xd-yb0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRz-RP-rqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1062,10 +1085,10 @@
             </objects>
             <point key="canvasLocation" x="2008.8" y="1754.5727136431785"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Forget Password View Controller-->
         <scene sceneID="I0s-pt-ouf">
             <objects>
-                <viewController id="3FK-W0-YhP" customClass="LoginViewController" customModule="JayasekaraJMSD_COBSCComp192p_012" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3FK-W0-YhP" customClass="ForgetPasswordViewController" customModule="JayasekaraJMSD_COBSCComp192p_012" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BL2-UB-wuZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1105,7 +1128,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="btnClickLogin:" destination="3FK-W0-YhP" eventType="touchUpInside" id="mzt-0A-ESg"/>
+                                            <action selector="btnClickResetPassword:" destination="3FK-W0-YhP" eventType="touchUpInside" id="i62-5c-7mH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPp-KD-UmW">
@@ -1114,7 +1137,7 @@
                                             <color key="titleColor" red="0.2219625194" green="0.42966564550000003" blue="0.58158192369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="btnClickRegister:" destination="3FK-W0-YhP" eventType="touchUpInside" id="1zN-Vk-u21"/>
+                                            <action selector="btnClickCancle:" destination="3FK-W0-YhP" eventType="touchUpInside" id="lRd-Jc-whB"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1136,7 +1159,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="txtEmail" destination="giv-Jr-1Lh" id="mlp-TD-9Y6"/>
+                        <outlet property="txtEmail" destination="giv-Jr-1Lh" id="O7D-SH-nzq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9Y-Lq-Vcr" sceneMemberID="firstResponder"/>
@@ -1146,6 +1169,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="rnK-GD-6vN"/>
+        <segue reference="CO7-qZ-bDM"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chart.bar.doc.horizontal" catalog="system" width="115" height="128"/>

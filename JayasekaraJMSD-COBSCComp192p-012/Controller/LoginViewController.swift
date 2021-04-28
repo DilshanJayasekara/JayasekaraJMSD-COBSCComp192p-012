@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import SPAlert
 class LoginViewController: UIViewController {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
@@ -19,7 +20,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func btnClickLogin(_ sender: Any) {
         if(validateLogin()){
-            checkLogin();
+            Login();
         }
     }
     
@@ -61,6 +62,47 @@ class LoginViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self?.present(alert, animated: true, completion: nil)
             }
+        }
+    }
+    
+    func Login()
+    {
+        Auth.auth().signIn(withEmail: txtEmail.text!, password: txtPassword.text!) { (authResult, error) in
+            if let error = error as NSError? {
+            switch AuthErrorCode(rawValue: error.code) {
+            case .operationNotAllowed:
+                let alert = UIAlertController(title: "Error", message: "Email is not allowed..!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                break
+            case .userDisabled:
+              // Error: The user account has been disabled by an administrator.
+                let alert = UIAlertController(title: "Error", message: "The user account has been disabled by an administrator.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+            break
+            case .invalidEmail:
+                let alert = UIAlertController(title: "Error", message: "The email address is badly formatted.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            break
+            case .wrongPassword:
+              // Error: The password is invalid or the user does not have a password.
+                let alert = UIAlertController(title: "Error", message: "The user name or password is invalid", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            break
+            
+            default:
+                let alert = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                print("Error: \(error.localizedDescription)")
+            }
+          } else {
+          
+                self.performSegue(withIdentifier: "SignIntoHome", sender: nil)
+          }
         }
     }
     /*
