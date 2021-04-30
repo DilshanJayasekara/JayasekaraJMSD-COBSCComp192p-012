@@ -22,7 +22,10 @@ class PreviewTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    @IBAction func btnClickSwitch(_ sender: UISwitch) {
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

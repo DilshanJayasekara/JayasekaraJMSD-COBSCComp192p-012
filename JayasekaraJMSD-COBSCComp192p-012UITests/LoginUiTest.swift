@@ -23,15 +23,16 @@ class LoginUiTest: XCTestCase {
         
         let emailField = app.textFields["emailtext"]
                 let pwdField = app.secureTextFields["pwdtext"]
-                let btn = app.buttons["loginbtn"]
+                let btnLogin = app.buttons["loginbtn"]
                
               
                 emailField.tap()
                 emailField.typeText("dilshan@gmail.com")
         
-            pwdField.tap()
-               pwdField.typeText("Test@123")
-        btn.tap()
+                pwdField.tap()
+                pwdField.typeText("Test@123")
+                
+                btnLogin.tap()
                 
                
     }

@@ -59,6 +59,7 @@ class ShowDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     {
         lblCustomerName.text = "\(UserDefaults.standard.string(forKey: "CusName") ?? "") (\(UserDefaults.standard.string(forKey: "OrderId") ?? ""))"
         lblTimeRemain.text = "1 Min";
+        btnArriving.setTitle(UserDefaults.standard.string(forKey: "Status"), for: .normal)
         let ref = Database.database().reference()
         print("Show = \(UserDefaults.standard.string(forKey: "OrderId") ?? "")")
         ref.child("Orders").child("\(UserDefaults.standard.string(forKey: "OrderId") ?? "")").child("items").observe(.value, with:{

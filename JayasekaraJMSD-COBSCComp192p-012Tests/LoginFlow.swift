@@ -11,12 +11,12 @@ class LoginFlow: XCTestCase {
 
     let authService = AuthService()
     func testValidEmail(){
-        let result = authService.validateEmail(email: "dilshan@gmail.com")
+        let result = authService.isValidateEmail(email: "dilshan@gmail.com")
         XCTAssertEqual(result, true)
     }
     
     func testInvalidEmail(){
-        let result = authService.validateEmail(email: "dilshangmail.com.asjdas")
+        let result = authService.isValidateEmail(email: "dilshangmail.com.asjdas")
                XCTAssertEqual(result, false)
     }
     
@@ -26,7 +26,7 @@ class LoginFlow: XCTestCase {
     }
     
     func  testInvalidPassword(){
-        let result = authService.isValidPassword(pwd: "test123")
+        let result = authService.isValidPassword(pwd: "Test123")
                XCTAssertEqual(result, false)
     }
 

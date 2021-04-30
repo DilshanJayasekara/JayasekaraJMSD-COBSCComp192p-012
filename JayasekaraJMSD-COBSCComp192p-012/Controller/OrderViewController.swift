@@ -87,7 +87,7 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
             orderCell.btnAccept.tag = Int(readyOrder[indexPath.row].id ?? "0") ?? 0
             orderCell.btnReject.tag = Int(readyOrder[indexPath.row].id ?? "0") ?? 0
             orderCell.btnAccept.backgroundColor = UIColor.orange
-            orderCell.btnAccept.setTitle("Arriving", for: .normal)
+            orderCell.btnAccept.setTitle(readyOrder[indexPath.row].status, for: .normal)
             orderCell.btnReject.isHidden = true;
             
         }
@@ -108,6 +108,7 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
             UserDefaults.standard.set(readyOrder[indexPath.row].id, forKey: "OrderId")
             UserDefaults.standard.set(readyOrder[indexPath.row].status, forKey: "Status")
             UserDefaults.standard.set(readyOrder[indexPath.row].cusName, forKey: "CusName")
+            UserDefaults.standard.set(readyOrder[indexPath.row].status, forKey: "Status")
             print("Click")
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "ORDER_SHOW") as! ShowDetailsViewController
             self.navigationController?.pushViewController(vc, animated: true)
@@ -128,12 +129,15 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         if let orderInfo = item.value as? [String: Any]{
                             print(orderInfo)
                                     let status = orderInfo["status"] as? String;
-                                        if( "New" == status)
+                                        if( "NEW" == status)
                                         {
                                             self.newOrders.append(NewOrder(id: orderInfo["orderId"] as? String,cusName: orderInfo["customer"] as? String, status: orderInfo["status"] as? String));
                                         }
-                                        else{
+                                        else if("PREPARATION" == status || "READY" == status){
                                             self.readyOrder.append(ReadyOrder(id: orderInfo["orderId"] as? String,cusName: orderInfo["customer"] as? String, status: orderInfo["status"] as? String));
+                                        }
+                                        else{
+                                            
                                         }
                                     }
                                 }

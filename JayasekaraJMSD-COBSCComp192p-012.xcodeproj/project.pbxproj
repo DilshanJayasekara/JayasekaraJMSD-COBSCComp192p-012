@@ -18,6 +18,7 @@
 		8A1E4A4626355A8900420A13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A1E4A4526355A8900420A13 /* GoogleService-Info.plist */; };
 		8A1E4A4726355A8900420A13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A1E4A4526355A8900420A13 /* GoogleService-Info.plist */; };
 		8A1E4A4826355A8900420A13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A1E4A4526355A8900420A13 /* GoogleService-Info.plist */; };
+		8A36AA43263C1B96004303D9 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A081008263BE109001E1CAC /* AuthService.swift */; };
 		8A7D234A26313CB1009F24E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D234926313CB1009F24E6 /* AppDelegate.swift */; };
 		8A7D234C26313CB1009F24E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D234B26313CB1009F24E6 /* SceneDelegate.swift */; };
 		8A7D234E26313CB1009F24E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D234D26313CB1009F24E6 /* ViewController.swift */; };
@@ -158,14 +159,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8A081007263BE06E001E1CAC /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				8A081008263BE109001E1CAC /* AuthService.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		8A444AAA263152A6000986F8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +193,7 @@
 		8A444AAC263152EA000986F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8A081008263BE109001E1CAC /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -216,7 +210,6 @@
 		8A7D233D26313CB1009F24E6 = {
 			isa = PBXGroup;
 			children = (
-				8A081007263BE06E001E1CAC /* Service */,
 				8A1E4A4526355A8900420A13 /* GoogleService-Info.plist */,
 				8A7D234826313CB1009F24E6 /* JayasekaraJMSD-COBSCComp192p-012 */,
 				8A7D236226313CB2009F24E6 /* JayasekaraJMSD-COBSCComp192p-012Tests */,
@@ -520,6 +513,7 @@
 				8A7D235426313CB1009F24E6 /* JayasekaraJMSD_COBSCComp192p_012.xcdatamodeld in Sources */,
 				8A7D234A26313CB1009F24E6 /* AppDelegate.swift in Sources */,
 				8A080FF9263B22B4001E1CAC /* AccountTableViewCell.swift in Sources */,
+				8A36AA43263C1B96004303D9 /* AuthService.swift in Sources */,
 				8A080FFE263B2450001E1CAC /* AccountViewController.swift in Sources */,
 				8AA32D132637217200F4F48E /* CheckBox.swift in Sources */,
 				8A7D234C26313CB1009F24E6 /* SceneDelegate.swift in Sources */,

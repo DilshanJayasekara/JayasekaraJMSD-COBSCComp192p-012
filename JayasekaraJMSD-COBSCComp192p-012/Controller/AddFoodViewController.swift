@@ -39,13 +39,12 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
     var foodCategory = ""
     var foodCategoryId = "123"
     var categories = [Category]()
-
+    var randomInt = Int.random(in: 1000..<10000);
     @IBAction func btnClickAdd(_ sender: Any) {
         AddFood();
     }
     //var ref: DatabaseReference!
     var ref = Database.database().reference()
-    var randomInt = Int.random(in: 1000..<10000)
     var imageURL = ""
     private let storage = Storage.storage().reference()
     
@@ -134,23 +133,35 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     //Add food to database
     func AddFood(){
+        randomInt = Int.random(in: 1000..<10000);
         foodName    = self.txtName.text ??  "";
         foodDesc    = self.txtDescription.text ?? "";
         foodDisc    = self.txtDiscount.text ?? "";
         foodPrice   = self.txtPrice.text ?? "";
-    
-        self.ref.child("foods").child("\(foodCategoryId ?? "")").child("\(randomInt ?? 0)").setValue(
-            ["foodName": self.foodName,
+        if (txtName.text == "" || txtDescription.text == "" || txtDiscount.text == "" || txtPrice.text == "")
+                      {
+                    let alert = UIAlertController(title: "Error", message: "Fields Cannot be Empty", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                self.present(alert, animated: true, completion: nil)
+                      }
+        
+        self.ref.child("Foods").child("\(self.randomInt)").setValue(
+            ["name": self.foodName,
              "description": self.foodDesc,
-             "price": self.foodPrice,
+             "price": Double(self.foodPrice) ?? 0,
              "image": self.imageURL,
              "category": self.foodCategory,
-            "discount":self.foodDisc,
-            "status":"Active"])
+            "discount": Double(self.foodDisc) ?? 0,
+            "cellActive":true])
+        let alert = UIAlertController(title: "Success", message: "Item Added Successfully", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                self.present(alert, animated: true, completion: nil)
+        cleanAll();
     }
     
     //Insert Image to fire Store
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        randomInt = Int.random(in: 1000..<10000);
             picker.dismiss(animated: true, completion: nil)
             guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else{
                 return
@@ -184,6 +195,13 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
       }
     func validation()->Bool{
         return true;
+    }
+    func cleanAll(){
+        txtName.text = "";
+        txtPrice.text = "";
+        txtDiscount.text = "";
+        txtDescription.text = "";
+        FoodImage.image = nil;
     }
     /*
     // MARK: - Navigation

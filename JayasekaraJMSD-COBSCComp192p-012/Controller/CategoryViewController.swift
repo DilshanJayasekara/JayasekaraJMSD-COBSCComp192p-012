@@ -29,6 +29,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         getCatogaryDetails()
                 tblCategoryView.delegate = self;
                 tblCategoryView.dataSource = self;
+        self.tblCategoryView.reloadData()
        // getCatogaryDetails()
        
         // Do any additional setup after loading the view.
@@ -74,12 +75,14 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
                 
                 present(alert, animated: true, completion: nil)
-                
             }
+          
+            self.tblCategoryView.reloadData();
         }
     func deleteCategory(id:String){
         let ref = Database.database().reference()
-        ref.child("Categories").removeValue();
+        ref.child("Categories").child("\(id)").removeValue();
+        getCatogaryDetails()
         self.tblCategoryView.reloadData()
         }
 
