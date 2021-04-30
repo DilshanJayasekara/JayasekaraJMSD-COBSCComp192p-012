@@ -14,7 +14,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if((UserDefaults.standard.bool(forKey: "Login")))
+        {
+            self.performSegue(withIdentifier: "SignIntoHome", sender: nil)
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -100,7 +103,8 @@ class LoginViewController: UIViewController {
                 print("Error: \(error.localizedDescription)")
             }
           } else {
-          
+                
+                 UserDefaults.standard.set(true, forKey: "Login")
                 self.performSegue(withIdentifier: "SignIntoHome", sender: nil)
           }
         }

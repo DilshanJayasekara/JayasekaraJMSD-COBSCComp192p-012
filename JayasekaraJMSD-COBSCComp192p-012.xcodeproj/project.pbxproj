@@ -12,6 +12,9 @@
 		8A080FF4263AE77C001E1CAC /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A080FF3263AE77C001E1CAC /* ShowDetailsViewController.swift */; };
 		8A080FF9263B22B4001E1CAC /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A080FF8263B22B4001E1CAC /* AccountTableViewCell.swift */; };
 		8A080FFE263B2450001E1CAC /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A080FFD263B2450001E1CAC /* AccountViewController.swift */; };
+		8A081009263BE109001E1CAC /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A081008263BE109001E1CAC /* AuthService.swift */; };
+		8A081014263BE197001E1CAC /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A081013263BE197001E1CAC /* LoginFlow.swift */; };
+		8A081019263BE369001E1CAC /* LoginUiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A081018263BE369001E1CAC /* LoginUiTest.swift */; };
 		8A1E4A4626355A8900420A13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A1E4A4526355A8900420A13 /* GoogleService-Info.plist */; };
 		8A1E4A4726355A8900420A13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A1E4A4526355A8900420A13 /* GoogleService-Info.plist */; };
 		8A1E4A4826355A8900420A13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A1E4A4526355A8900420A13 /* GoogleService-Info.plist */; };
@@ -65,6 +68,9 @@
 		8A080FF3263AE77C001E1CAC /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
 		8A080FF8263B22B4001E1CAC /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		8A080FFD263B2450001E1CAC /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		8A081008263BE109001E1CAC /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		8A081013263BE197001E1CAC /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
+		8A081018263BE369001E1CAC /* LoginUiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUiTest.swift; sourceTree = "<group>"; };
 		8A1E4A4526355A8900420A13 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A7D234626313CB1009F24E6 /* JayasekaraJMSD-COBSCComp192p-012.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JayasekaraJMSD-COBSCComp192p-012.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7D234926313CB1009F24E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +158,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8A081007263BE06E001E1CAC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8A081008263BE109001E1CAC /* AuthService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		8A444AAA263152A6000986F8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +216,7 @@
 		8A7D233D26313CB1009F24E6 = {
 			isa = PBXGroup;
 			children = (
+				8A081007263BE06E001E1CAC /* Service */,
 				8A1E4A4526355A8900420A13 /* GoogleService-Info.plist */,
 				8A7D234826313CB1009F24E6 /* JayasekaraJMSD-COBSCComp192p-012 */,
 				8A7D236226313CB2009F24E6 /* JayasekaraJMSD-COBSCComp192p-012Tests */,
@@ -243,6 +258,7 @@
 			children = (
 				8A7D236326313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012Tests.swift */,
 				8A7D236526313CB2009F24E6 /* Info.plist */,
+				8A081013263BE197001E1CAC /* LoginFlow.swift */,
 			);
 			path = "JayasekaraJMSD-COBSCComp192p-012Tests";
 			sourceTree = "<group>";
@@ -252,6 +268,7 @@
 			children = (
 				8A7D236E26313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012UITests.swift */,
 				8A7D237026313CB2009F24E6 /* Info.plist */,
+				8A081018263BE369001E1CAC /* LoginUiTest.swift */,
 			);
 			path = "JayasekaraJMSD-COBSCComp192p-012UITests";
 			sourceTree = "<group>";
@@ -524,7 +541,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A081009263BE109001E1CAC /* AuthService.swift in Sources */,
 				8A7D236426313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012Tests.swift in Sources */,
+				8A081014263BE197001E1CAC /* LoginFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +552,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A7D236F26313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012UITests.swift in Sources */,
+				8A081019263BE369001E1CAC /* LoginUiTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
