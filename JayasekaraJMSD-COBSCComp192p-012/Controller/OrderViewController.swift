@@ -33,7 +33,9 @@ public struct ReadyOrder: Codable {
 }
 
 class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var tblOrderView: UITableView!
+
     
     var newOrders = [NewOrder]()
     var readyOrder = [ReadyOrder]()
@@ -46,6 +48,7 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tblOrderView.delegate = self;
         tblOrderView.dataSource = self;
         getOrderDetails()
+        self.tblOrderView.reloadData()
         // Do any additional setup after loading the view.
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -60,7 +63,7 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         else
         {
-            return "NEW"
+            return "New"
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -79,17 +82,39 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let orderCell = tblOrderView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! OrderTableViewCell
         if(indexPath.section == 0)
         {
-            orderCell.lblOrderId.text = readyOrder[indexPath.row].id as? String;
-            orderCell.lblCustomerName.text = readyOrder[indexPath.row].cusName as? String;
+            orderCell.lblOrderId.text = readyOrder[indexPath.row].id;
+            orderCell.lblCustomerName.text = readyOrder[indexPath.row].cusName;
+            orderCell.btnAccept.tag = Int(readyOrder[indexPath.row].id ?? "0") ?? 0
+            orderCell.btnReject.tag = Int(readyOrder[indexPath.row].id ?? "0") ?? 0
+            orderCell.btnAccept.backgroundColor = UIColor.orange
+            orderCell.btnAccept.setTitle("Arriving", for: .normal)
+            orderCell.btnReject.isHidden = true;
+            
         }
         else
         {
-            orderCell.lblOrderId.text = newOrders[indexPath.row].id as? String;
-            orderCell.lblCustomerName.text = newOrders[indexPath.row].cusName as? String;
+            orderCell.btnAccept.tag = Int(newOrders[indexPath.row].id ?? "0") ?? 0
+            orderCell.btnReject.tag = Int(newOrders[indexPath.row].id ?? "0") ?? 0
+            orderCell.lblOrderId.text = newOrders[indexPath.row].id;
+            orderCell.lblCustomerName.text = newOrders[indexPath.row].cusName;
+            orderCell.isEditing = false;
         }
         return orderCell;
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.section);
+        if(indexPath.section == 0)
+        {
+            UserDefaults.standard.set(readyOrder[indexPath.row].id, forKey: "OrderId")
+            UserDefaults.standard.set(readyOrder[indexPath.row].status, forKey: "Status")
+            UserDefaults.standard.set(readyOrder[indexPath.row].cusName, forKey: "CusName")
+            print("Click")
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ORDER_SHOW") as! ShowDetailsViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+            self.present(vc, animated: true, completion: nil)
+            //self.performSegue(withIdentifier: "OrderToDetails", sender: nil)
+        }
+    }
     func getOrderDetails()
     {
         let ref = Database.database().reference()
@@ -102,9 +127,6 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     for item in Orders {
                         if let orderInfo = item.value as? [String: Any]{
                             print(orderInfo)
-                            //let singleCategory = Category(
-                               // CategoryId: itemInfo.key, CategoryName: foodInfo["CategoryName"] as? String)
-                                 //   self.categories.append(singleCategory)
                                     let status = orderInfo["status"] as? String;
                                         if( "New" == status)
                                         {

@@ -37,7 +37,7 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
     var foodDisc    = ""
     var foodPrice   = ""
     var foodCategory = ""
-    var foodCategoryId = ""
+    var foodCategoryId = "123"
     var categories = [Category]()
 
     @IBAction func btnClickAdd(_ sender: Any) {
@@ -139,7 +139,7 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
         foodDisc    = self.txtDiscount.text ?? "";
         foodPrice   = self.txtPrice.text ?? "";
     
-        self.ref.child("foods").child("\(foodCategoryId)").child("\(randomInt)").setValue(
+        self.ref.child("foods").child("\(foodCategoryId ?? "")").child("\(randomInt ?? 0)").setValue(
             ["foodName": self.foodName,
              "description": self.foodDesc,
              "price": self.foodPrice,

@@ -6,11 +6,21 @@
 //
 
 import UIKit
-
+import Firebase
 class OrderTableViewCell: UITableViewCell {
 
+    var ref = Database.database().reference()
     @IBOutlet weak var lblOrderId: UILabel!
     @IBOutlet weak var lblCustomerName: UILabel!
+    @IBOutlet weak var btnAccept: UIButton!
+    @IBOutlet weak var btnReject: UIButton!
+    
+    @IBAction func btnClickReject(_ sender: UIButton) {
+        self.ref.child("Orders/\(sender.tag)/status").setValue("Cancel")
+    }
+    @IBAction func btnClickAccept(_ sender: UIButton) {
+        self.ref.child("Orders/\(sender.tag)/status").setValue("Arriving")
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
