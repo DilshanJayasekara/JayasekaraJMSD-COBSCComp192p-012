@@ -27,10 +27,10 @@ class LoginUiTest: XCTestCase {
                
               
                 emailField.tap()
-                emailField.typeText("dilshan@gmail.com")
+                emailField.typeText("130susith@gmail.com")
         
                 pwdField.tap()
-                pwdField.typeText("Test@123")
+                pwdField.typeText("1234567")
                 
                 btnLogin.tap()
                 

@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return false;
-        }else if isValidPassword(pwd: txtPassword.text ?? ""){
+        }else if !isValidPassword(pwd: txtPassword.text ?? ""){
             let alert = UIAlertController(title: "Error", message: "Please Check Your Email and Password", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
