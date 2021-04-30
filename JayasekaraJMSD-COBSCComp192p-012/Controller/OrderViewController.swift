@@ -133,7 +133,7 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
                                         {
                                             self.newOrders.append(NewOrder(id: orderInfo["orderId"] as? String,cusName: orderInfo["customer"] as? String, status: orderInfo["status"] as? String));
                                         }
-                                        else if("PREPARATION" == status || "READY" == status){
+                                        else if("PREPARATION" == status || "READY" == status || "ARRIVING" == status){
                                             self.readyOrder.append(ReadyOrder(id: orderInfo["orderId"] as? String,cusName: orderInfo["customer"] as? String, status: orderInfo["status"] as? String));
                                         }
                                         else{

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rg8-lh-cOJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -475,18 +475,19 @@
                                             <action selector="btnPrintHistoryClick:" destination="V2T-un-kvd" eventType="touchUpInside" id="tM3-RL-4nt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8k-ly-ld3">
-                                        <rect key="frame" x="309" y="14" width="58" height="23"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8k-ly-ld3">
+                                        <rect key="frame" x="295" y="14" width="72" height="23"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="CR6-CL-74x"/>
-                                            <constraint firstAttribute="width" constant="29" id="vmZ-ZZ-roK"/>
+                                            <constraint firstAttribute="width" constant="72" id="dNE-3a-LIx"/>
                                         </constraints>
                                         <state key="normal" title="Logout">
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
                                         <connections>
                                             <action selector="btnMenuClick:" destination="V2T-un-kvd" eventType="touchUpInside" id="lkv-gz-1zR"/>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="zN1-A1-nrI"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -496,6 +497,7 @@
                                     <constraint firstAttribute="bottom" secondItem="kez-T9-Xab" secondAttribute="bottom" constant="14" id="9Wl-Gz-wID"/>
                                     <constraint firstAttribute="height" constant="51" id="PC2-PT-kPu"/>
                                     <constraint firstItem="h8k-ly-ld3" firstAttribute="top" secondItem="45f-Gh-160" secondAttribute="top" constant="14" id="Wct-py-kIt"/>
+                                    <constraint firstAttribute="trailing" secondItem="h8k-ly-ld3" secondAttribute="trailing" constant="8" id="peC-J2-rNl"/>
                                     <constraint firstItem="kez-T9-Xab" firstAttribute="top" secondItem="45f-Gh-160" secondAttribute="top" constant="14" id="wOj-5z-Fmr"/>
                                     <constraint firstItem="kez-T9-Xab" firstAttribute="leading" secondItem="45f-Gh-160" secondAttribute="leading" constant="8" id="wb8-YB-k9X"/>
                                 </constraints>
@@ -604,7 +606,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="GHl-Ou-hN1"/>
                                                         </constraints>
-                                                        <state key="normal" title="Search"/>
+                                                        <state key="normal" title="Filter"/>
                                                         <connections>
                                                             <action selector="btnSearchClick:" destination="V2T-un-kvd" eventType="touchUpInside" id="Kcz-Uf-m8V"/>
                                                         </connections>
@@ -656,6 +658,7 @@
                     <tabBarItem key="tabBarItem" title="ACCOUNT" image="person" catalog="system" id="B0q-0L-eae"/>
                     <connections>
                         <outlet property="dateTimepic" destination="JkL-BE-k6U" id="Xin-1W-XiX"/>
+                        <outlet property="lblTotal" destination="Qys-6v-8JG" id="NBq-Za-4jD"/>
                         <outlet property="tblAccountView" destination="uVk-ow-TMo" id="rL2-RH-I4O"/>
                     </connections>
                 </viewController>
@@ -912,10 +915,10 @@
                                             <constraint firstAttribute="height" constant="40" id="LIh-Hs-CtG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                                     </textField>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="faw-sa-oiH">
-                                        <rect key="frame" x="145" y="205" width="85" height="82.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="faw-sa-oiH">
+                                        <rect key="frame" x="145" y="204" width="85" height="85"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="85" id="dSp-cf-i0O"/>
                                             <constraint firstAttribute="width" constant="85" id="eLh-yG-Tqn"/>
@@ -933,7 +936,7 @@
                                             <constraint firstAttribute="height" constant="40" id="pqg-cd-fX3"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="nRc-km-cRI">
                                         <rect key="frame" x="125" y="454" width="125.5" height="20.5"/>
@@ -1273,7 +1276,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MPG-RJ-S07"/>
+        <segue reference="rnK-GD-6vN"/>
         <segue reference="jdY-or-z6T"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1282,7 +1285,7 @@
         <image name="logo" width="96" height="96"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="phone" catalog="system" width="128" height="115"/>
-        <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="photo" width="512" height="512"/>
         <image name="rectangle.grid.2x2" catalog="system" width="128" height="99"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

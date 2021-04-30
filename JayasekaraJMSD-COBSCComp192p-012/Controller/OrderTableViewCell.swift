@@ -28,6 +28,11 @@ class OrderTableViewCell: UITableViewCell {
         else if(count == 1)
         {
             self.ref.child("Orders/\(sender.tag)/status").setValue("READY")
+            count = count + 1;
+        }
+        else if(count == 2)
+        {
+            self.ref.child("Orders/\(sender.tag)/status").setValue("DONE")
             count = 0;
         }
         

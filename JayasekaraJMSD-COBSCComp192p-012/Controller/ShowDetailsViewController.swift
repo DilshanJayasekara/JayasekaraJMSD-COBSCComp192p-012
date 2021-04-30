@@ -70,13 +70,24 @@ class ShowDetailsViewController: UIViewController, UITableViewDelegate, UITableV
                     for item in items {
                         if let itemInfo = item.value as? [String: Any]{
                             self.orderItems.append(OrderItem(name: itemInfo["foodName"] as? String, qty: "\(itemInfo["qty"] ?? 0) X", price: "\(itemInfo["price"] ?? 0)"))
+                            self.ChangeStatus(lattude: itemInfo["latitude"] as? Double ?? 0, longt: itemInfo["longitude"] as? Double ?? 0)
                                     }
                                 }
                                 self.tblItemView.reloadData()
                           }
                     }
              })
-        // calculateDistance(lattude: 6.9067224862493495, longt: 79.87482674141901);
+        
+    }
+    func ChangeStatus(lattude:Double,longt:Double)
+    {
+        print(lattude,longt)
+        if(lattude < 8 && longt < 81)
+        {
+            print("User Arrived...!")
+            self.ref.child("Orders/\(UserDefaults.standard.string(forKey: "OrderId") ?? "")/status").setValue("ARRIVING")
+            
+        }
     }
     func calculateDistance(lattude:Double,longt:Double) -> Int{
         

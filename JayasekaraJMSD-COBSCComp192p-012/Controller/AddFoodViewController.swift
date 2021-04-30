@@ -41,7 +41,10 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
     var categories = [Category]()
     var randomInt = Int.random(in: 1000..<10000);
     @IBAction func btnClickAdd(_ sender: Any) {
-        AddFood();
+        if(Validation())
+        {
+            AddFood();
+        }
     }
     //var ref: DatabaseReference!
     var ref = Database.database().reference()
@@ -146,7 +149,8 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
                       }
         
         self.ref.child("Foods").child("\(self.randomInt)").setValue(
-            ["name": self.foodName,
+            ["id" : "\(self.randomInt)",
+             "name": self.foodName,
              "description": self.foodDesc,
              "price": Double(self.foodPrice) ?? 0,
              "image": self.imageURL,
@@ -201,7 +205,19 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
         txtPrice.text = "";
         txtDiscount.text = "";
         txtDescription.text = "";
-        FoodImage.image = nil;
+        FoodImage.image = UIImage(named: "photo.png");
+    }
+    func Validation()->Bool{
+        if(txtName.text  == "" || txtPrice.text == "" || txtDiscount.text == "" || txtDescription.text == "" )
+        {
+            let alert = UIAlertController(title: "Error", message: "Please Fill All Fields", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
+        }
+        else{
+            return true
+        }
     }
     /*
     // MARK: - Navigation
@@ -212,5 +228,4 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Pass the selected object to the new view controller.
     }
     */
-
 }

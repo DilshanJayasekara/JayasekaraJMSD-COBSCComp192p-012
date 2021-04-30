@@ -129,6 +129,8 @@ class PreviewViewController: UIViewController,UITableViewDataSource, UITableView
              })
     
        }
+    
+    
     /*
     // MARK: - Navigation
 

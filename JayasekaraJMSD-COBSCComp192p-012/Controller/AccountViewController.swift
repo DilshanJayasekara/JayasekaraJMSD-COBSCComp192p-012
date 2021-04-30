@@ -35,7 +35,8 @@ public struct Item: Codable {
     }
 }
 class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
- 
+    @IBOutlet weak var lblTotal: UILabel!
+    
     @IBOutlet weak var tblAccountView: UITableView!
     @IBOutlet weak var dateTimepic: UIDatePicker!
     var ref = Database.database().reference()
@@ -45,7 +46,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     var cellprice :String!
     var item = "";
     var price = "";
-    
+    var total = 0.0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,10 +130,12 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
                     self.recipts.removeAll()
                     for order in orders {
                         if let OrderInfo = order.value as? [String: Any]{
-                            //self.recipts.append(Recipt(id: "100", date: "A", item: "Item", price: "100", total: "100"));
                             print(d1);
-                            if(d1 == OrderInfo["date"] as? String){
+                            if(d1 == OrderInfo["date"] as? String && "DONE" == OrderInfo["status"] as? String){
                             self.recipts.append(Recipt(id: OrderInfo["orderId"] as? String, date:  OrderInfo["date"] as? String, food: OrderInfo["foodName"] as? String, price: OrderInfo["price"] as? Double, total: OrderInfo["price"] as? Double))
+                                let tot =  OrderInfo["price"] as? Double;
+                                self.total = self.total + (tot ?? 0) ;
+                                self.lblTotal.text = String(self.total)
                             }
                                     }
                                 }
