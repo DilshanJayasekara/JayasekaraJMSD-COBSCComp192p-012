@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mln-Yf-qBo">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -9,10 +9,18 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--LOGIN_VIEW-->
+        <scene sceneID="2CQ-Pf-sk0">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="LOGIN_VIEW" id="Jjd-qb-wIF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uzm-9n-gZZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-551" y="-344"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="JayasekaraJMSD_COBSCComp192p_012" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LOGIN_VIEW" id="BYZ-38-t0r" customClass="LoginViewController" customModule="JayasekaraJMSD_COBSCComp192p_012" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -338,7 +346,7 @@
                 <viewControllerPlaceholder referencedIdentifier="MAIN_VIEW" id="ZAy-7q-hXy" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hq-EM-ExE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="506" y="-448"/>
+            <point key="canvasLocation" x="597" y="-549"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="GAS-Fp-iC8">
@@ -487,7 +495,6 @@
                                         </state>
                                         <connections>
                                             <action selector="btnMenuClick:" destination="V2T-un-kvd" eventType="touchUpInside" id="lkv-gz-1zR"/>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="zN1-A1-nrI"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -660,6 +667,7 @@
                         <outlet property="dateTimepic" destination="JkL-BE-k6U" id="Xin-1W-XiX"/>
                         <outlet property="lblTotal" destination="Qys-6v-8JG" id="NBq-Za-4jD"/>
                         <outlet property="tblAccountView" destination="uVk-ow-TMo" id="rL2-RH-I4O"/>
+                        <segue destination="Jjd-qb-wIF" kind="presentation" identifier="AccountToLogin" modalPresentationStyle="fullScreen" id="axf-rs-Npw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LO1-nB-biM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1076,8 +1084,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZ4-6m-I3s">
-                                        <rect key="frame" x="130" y="87" width="46" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZ4-6m-I3s">
+                                        <rect key="frame" x="130" y="87" width="58" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1193,6 +1201,53 @@
             </objects>
             <point key="canvasLocation" x="2008.8" y="1754.5727136431785"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="UM3-lY-ca2">
+            <objects>
+                <viewController id="mln-Yf-qBo" customClass="ViewController" customModule="JayasekaraJMSD_COBSCComp192p_012" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hwf-h1-CaH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2SM-Kl-Gku">
+                                <rect key="frame" x="128.5" y="263.5" width="118" height="140"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="GKz-m1-e35">
+                                        <rect key="frame" x="11" y="0.0" width="96" height="96"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cafe' NIBM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOj-a3-gUF">
+                                        <rect key="frame" x="0.0" y="111" width="118" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powerd by NIBM Computing " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTO-JZ-FWf">
+                                <rect key="frame" x="78.5" y="626.5" width="218.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yFW-J7-cGK"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="yFW-J7-cGK" firstAttribute="bottom" secondItem="JTO-JZ-FWf" secondAttribute="bottom" constant="20" id="5y8-gK-56N"/>
+                            <constraint firstItem="JTO-JZ-FWf" firstAttribute="centerX" secondItem="hwf-h1-CaH" secondAttribute="centerX" id="Lxo-We-5zz"/>
+                            <constraint firstItem="2SM-Kl-Gku" firstAttribute="centerY" secondItem="hwf-h1-CaH" secondAttribute="centerY" id="oGj-iZ-HTW"/>
+                            <constraint firstItem="2SM-Kl-Gku" firstAttribute="centerX" secondItem="hwf-h1-CaH" secondAttribute="centerX" id="qqd-ht-Gsy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="ZAy-7q-hXy" kind="presentation" identifier="LaunchtoHome" modalPresentationStyle="fullScreen" id="5lB-dA-NFw"/>
+                        <segue destination="Jjd-qb-wIF" kind="presentation" identifier="LaunchtoLogin" modalPresentationStyle="fullScreen" id="VWd-4b-UMd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mA7-EW-x0h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1121" y="-736"/>
+        </scene>
         <!--Forget Password View Controller-->
         <scene sceneID="I0s-pt-ouf">
             <objects>
@@ -1276,8 +1331,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rnK-GD-6vN"/>
-        <segue reference="jdY-or-z6T"/>
+        <segue reference="MPG-RJ-S07"/>
+        <segue reference="5lB-dA-NFw"/>
+        <segue reference="axf-rs-Npw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>

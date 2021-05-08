@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import UserNotifications
 class StoreViewController: UIViewController {
 
     @IBOutlet weak var PreviewView: UIView!
@@ -14,7 +14,7 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var MenuView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        allowNotification();
         // Do any additional setup after loading the view.
     }
     
@@ -35,6 +35,19 @@ class StoreViewController: UIViewController {
               default:
                 PreviewView.isHidden = false
               }
+    }
+    
+    func allowNotification()
+    {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { success, error in
+            if success {
+                // schedule test
+                print("Pop Allow Notification")
+            }
+            else if error != nil {
+                print("error occurred")
+            }
+        })
     }
     
     /*

@@ -12,7 +12,6 @@
 		8A080FF4263AE77C001E1CAC /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A080FF3263AE77C001E1CAC /* ShowDetailsViewController.swift */; };
 		8A080FF9263B22B4001E1CAC /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A080FF8263B22B4001E1CAC /* AccountTableViewCell.swift */; };
 		8A080FFE263B2450001E1CAC /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A080FFD263B2450001E1CAC /* AccountViewController.swift */; };
-		8A081009263BE109001E1CAC /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A081008263BE109001E1CAC /* AuthService.swift */; };
 		8A081014263BE197001E1CAC /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A081013263BE197001E1CAC /* LoginFlow.swift */; };
 		8A081019263BE369001E1CAC /* LoginUiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A081018263BE369001E1CAC /* LoginUiTest.swift */; };
 		8A1E4A4626355A8900420A13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A1E4A4526355A8900420A13 /* GoogleService-Info.plist */; };
@@ -28,6 +27,8 @@
 		8A7D236426313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D236326313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012Tests.swift */; };
 		8A7D236F26313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D236E26313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012UITests.swift */; };
 		8A89C24C26368A050092ABAB /* AddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A89C24B26368A050092ABAB /* AddFoodViewController.swift */; };
+		8A9D0BAD26458A56009A032D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A081008263BE109001E1CAC /* AuthService.swift */; };
+		8A9D0BB426458A84009A032D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A081008263BE109001E1CAC /* AuthService.swift */; };
 		8AA32D132637217200F4F48E /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA32D122637217200F4F48E /* CheckBox.swift */; };
 		8AA32D182637D59C00F4F48E /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA32D172637D59C00F4F48E /* CategoryTableViewCell.swift */; };
 		8AA32D252637DB4400F4F48E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA32D242637DB4400F4F48E /* CategoryViewController.swift */; };
@@ -512,6 +513,7 @@
 				8A7D235426313CB1009F24E6 /* JayasekaraJMSD_COBSCComp192p_012.xcdatamodeld in Sources */,
 				8A7D234A26313CB1009F24E6 /* AppDelegate.swift in Sources */,
 				8A080FF9263B22B4001E1CAC /* AccountTableViewCell.swift in Sources */,
+				8A9D0BAD26458A56009A032D /* AuthService.swift in Sources */,
 				8A080FFE263B2450001E1CAC /* AccountViewController.swift in Sources */,
 				8AA32D132637217200F4F48E /* CheckBox.swift in Sources */,
 				8A7D234C26313CB1009F24E6 /* SceneDelegate.swift in Sources */,
@@ -533,7 +535,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A081009263BE109001E1CAC /* AuthService.swift in Sources */,
+				8A9D0BB426458A84009A032D /* AuthService.swift in Sources */,
 				8A7D236426313CB2009F24E6 /* JayasekaraJMSD_COBSCComp192p_012Tests.swift in Sources */,
 				8A081014263BE197001E1CAC /* LoginFlow.swift in Sources */,
 			);

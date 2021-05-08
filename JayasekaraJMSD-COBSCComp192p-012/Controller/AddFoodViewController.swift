@@ -18,6 +18,7 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var pvCategory: UIPickerView!
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var txtDiscount: UITextField!
+    
     @IBAction func btnCheckBoxClick(_ sender: Any) {
             if(btnclick%2 == 1)
             {
@@ -30,6 +31,7 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         btnclick = btnclick + 1;
     }
+    
     var btnclick = 1;
     
     var foodName    = ""
@@ -215,10 +217,40 @@ class AddFoodViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.present(alert, animated: true, completion: nil)
             return false
         }
-        else{
+        else if(!isValidateNumber(value: txtPrice.text ?? ""))
+        {
+            let alert = UIAlertController(title: "Error", message: "Please Enter Number only for Price", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
+            
+        }
+        else if(!isValidateNumber(value: txtDiscount.text ?? ""))
+        {
+            let alert = UIAlertController(title: "Error", message: "Please Enter Number only for Discount", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
+            
+        }
+        else if(0 > Int(self.txtDiscount.text ?? "0")! || 100 < Int(self.txtDiscount.text ?? "0")!)
+        {
+            let alert = UIAlertController(title: "Error", message: "Please Enter value less than or equal 100 for Discount", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
+        }
+        else
+        {
             return true
         }
     }
+    func isValidateNumber(value: String) -> Bool {
+                let NUMBER_REGEX = #"^[0-9]*$"#
+                let numberTest = NSPredicate(format: "SELF MATCHES %@", NUMBER_REGEX)
+                let result = numberTest.evaluate(with: value)
+                return result
+            }
     /*
     // MARK: - Navigation
 

@@ -10,12 +10,9 @@ import FirebaseAuth
 class LoginViewController: UIViewController {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
+    let authService = AuthService()
     override func viewDidLoad() {
         super.viewDidLoad()
-        if((UserDefaults.standard.bool(forKey: "Login")))
-        {
-            self.performSegue(withIdentifier: "SignIntoHome", sender: nil)
-        }
         // Do any additional setup after loading the view.
     }
     
@@ -33,12 +30,13 @@ class LoginViewController: UIViewController {
     }
     
     func validateLogin()-> Bool{
-        if !isValidateEmail(email: txtEmail.text ?? ""){
-            let alert = UIAlertController(title: "Error", message: "Please Check Your Email and Password", preferredStyle: .alert)
+        if !authService.isValidateEmail(email: txtEmail.text ?? ""){
+            let alert = UIAlertController(title: "Error", message: "Please Check Your Email", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return false;
-        }else if !isValidPassword(pwd: txtPassword.text ?? ""){
+            
+        }else if !authService.isValidPassword(pwd: txtPassword.text ?? ""){
             let alert = UIAlertController(title: "Error", message: "Please Check Your Email and Password", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -106,26 +104,6 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "SignIntoHome", sender: nil)
           }
         }
-    }
-    
-    func isValidateEmail(email:String) -> Bool{
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
-          let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-          return emailPred.evaluate(with: email)
-    }
-    
-    func isValidPassword(pwd:String) -> Bool {
-        // least one uppercase,
-        // least one digit
-        // least one lowercase
-        // least one symbol
-        //  min 6 characters total
-        let password = pwd.trimmingCharacters(in: CharacterSet.whitespaces)
-        let passwordRegx = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&<>*~:`-]).{6,}$"
-        let passwordCheck = NSPredicate(format: "SELF MATCHES %@",passwordRegx)
-        return passwordCheck.evaluate(with: password)
-
     }
     /*
     // MARK: - Navigation

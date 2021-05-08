@@ -12,7 +12,7 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var txtMobile: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
-    
+    let authService = AuthService()
     var ref = Database.database().reference()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,18 +25,17 @@ class RegisterViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        else if !isValidateEmail(email: txtEmail.text ?? ""){
-            let alert = UIAlertController(title: "Error", message: "Please Check Your Email and Password", preferredStyle: .alert)
+        else if !authService.isValidateEmail(email: txtEmail.text ?? ""){
+            let alert = UIAlertController(title: "Error", message: "Please Check Your Email", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-        }else if !isValidPassword(pwd: txtPassword.text ?? ""){
-            let alert = UIAlertController(title: "Error", message: "Please Check Your Email and Password", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        else if(txtMobile.text == "")
+        }else if !isValidateMoibile(value: txtMobile.text ?? "")
         {
             let alert = UIAlertController(title: "Error", message: "Please Check Mobile Number", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else if !authService.isValidPassword(pwd: txtPassword.text ?? ""){
+            let alert = UIAlertController(title: "Error", message: "Password should be at least one uppercase, one digit, one lowercase, one symbol and more than 5 characters", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -84,7 +83,7 @@ class RegisterViewController: UIViewController {
                                 }
                               }
                 print("User signs up successfully")
-              //  let newUserInfo = Auth.auth().currentUser
+                UserDefaults.standard.set(true, forKey: "Login")
                 self.ref.child("users").child(self.txtMobile.text ?? "0").setValue(["email": self.txtEmail.text!])
                 UserDefaults.standard.set(self.txtMobile.text, forKey: "mobile")
                 if error != nil {
@@ -101,25 +100,12 @@ class RegisterViewController: UIViewController {
                       self.present(alertController, animated: true, completion: nil)
             }
         }
-    func isValidateEmail(email:String) -> Bool{
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
-          let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-          return emailPred.evaluate(with: email)
-    }
-    
-    func isValidPassword(pwd:String) -> Bool {
-        // least one uppercase,
-        // least one digit
-        // least one lowercase
-        // least one symbol
-        //  min 6 characters total
-        let password = pwd.trimmingCharacters(in: CharacterSet.whitespaces)
-        let passwordRegx = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&<>*~:`-]).{6,}$"
-        let passwordCheck = NSPredicate(format: "SELF MATCHES %@",passwordRegx)
-        return passwordCheck.evaluate(with: password)
-
-    }
+    func isValidateMoibile(value: String) -> Bool {
+                let PHONE_REGEX = #"^\(?\d{3}\)?[ -]?\d{3}[ -]?\d{4}$"#
+                let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+                let result = phoneTest.evaluate(with: value)
+                return result
+            }
     /*
     // MARK: - Navigation
 

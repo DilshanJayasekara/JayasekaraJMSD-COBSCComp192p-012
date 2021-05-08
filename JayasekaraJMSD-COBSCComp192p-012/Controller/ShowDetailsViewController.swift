@@ -19,6 +19,7 @@ public struct OrderItem: Codable {
 import UIKit
 import Firebase
 import CoreLocation
+import UserNotifications
 class ShowDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var lblCustomerName: UILabel!
     @IBOutlet weak var btnArriving: UIButton!
@@ -29,9 +30,11 @@ class ShowDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getLocation();
         getDetails();
         tblItemView.delegate = self;
         tblItemView.dataSource = self;
+        
         // Do any additional setup after loading the view.
     }
     
@@ -58,7 +61,6 @@ class ShowDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     func getDetails()
     {
         lblCustomerName.text = "\(UserDefaults.standard.string(forKey: "CusName") ?? "") (\(UserDefaults.standard.string(forKey: "OrderId") ?? ""))"
-        lblTimeRemain.text = "1 Min";
         btnArriving.setTitle(UserDefaults.standard.string(forKey: "Status"), for: .normal)
         let ref = Database.database().reference()
         print("Show = \(UserDefaults.standard.string(forKey: "OrderId") ?? "")")
@@ -69,8 +71,7 @@ class ShowDetailsViewController: UIViewController, UITableViewDelegate, UITableV
                     self.orderItems.removeAll();
                     for item in items {
                         if let itemInfo = item.value as? [String: Any]{
-                            self.orderItems.append(OrderItem(name: itemInfo["foodName"] as? String, qty: "\(itemInfo["qty"] ?? 0) X", price: "\(itemInfo["price"] ?? 0)"))
-                            self.ChangeStatus(lattude: itemInfo["latitude"] as? Double ?? 0, longt: itemInfo["longitude"] as? Double ?? 0)
+                            self.orderItems.append(OrderItem(name: itemInfo["foodName"] as? String, qty: "\(itemInfo["qty"] ?? 0) X", price: "\(itemInfo["price"] ?? 0)"));
                                     }
                                 }
                                 self.tblItemView.reloadData()
@@ -79,15 +80,65 @@ class ShowDetailsViewController: UIViewController, UITableViewDelegate, UITableV
              })
         
     }
+    func getLocation()
+    {
+        let ref = Database.database().reference()
+        print("Show = \(UserDefaults.standard.string(forKey: "OrderId") ?? "")")
+        ref.child("Orders").child("\(UserDefaults.standard.string(forKey: "OrderId") ?? "")").observe(.value, with:{
+            (snapshot) in
+            if let data = snapshot.value {
+                if let items = data as? [String: Any]{
+                    if("READY" == UserDefaults.standard.string(forKey: "Status") || "ARRIVING" == UserDefaults.standard.string(forKey: "Status"))
+                    {
+                        self.ChangeStatus(lattude: items["latitude"] as! Double , longt: items["longitude"] as! Double)
+                    }
+                        
+                          }
+                    }
+             })
+        
+    }
     func ChangeStatus(lattude:Double,longt:Double)
     {
         print(lattude,longt)
-        if(lattude < 8 && longt < 81)
+        if(1000>calculateDistance(lattude: lattude, longt: longt) && calculateDistance(lattude: lattude, longt: longt) >= 500)
         {
-            print("User Arrived...!")
-            self.ref.child("Orders/\(UserDefaults.standard.string(forKey: "OrderId") ?? "")/status").setValue("ARRIVING")
+            lblTimeRemain.text = "15 Min";
+            self.ref.child("Orders/\(UserDefaults.standard.string(forKey: "OrderId") ?? "")/status").setValue("READY")
+            UserDefaults.standard.set("READY", forKey: "Status")
             
         }
+        else if(500 > calculateDistance(lattude: lattude, longt: longt) && calculateDistance(lattude: lattude, longt: longt) >= 200)
+        {
+            lblTimeRemain.text = "5 Min";
+            self.ref.child("Orders/\(UserDefaults.standard.string(forKey: "OrderId") ?? "")/status").setValue("READY")
+            UserDefaults.standard.set("READY", forKey: "Status")
+        }
+        else if(200 > calculateDistance(lattude: lattude, longt: longt) && calculateDistance(lattude: lattude, longt: longt) >= 0)
+        {
+            self.ref.child("Orders/\(UserDefaults.standard.string(forKey: "OrderId") ?? "")/status").setValue("ARRIVING")
+            lblTimeRemain.text = "1 Min";
+            UserDefaults.standard.set("ARRIVING", forKey: "Status")
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { success, error in
+                if success {
+                    // schedule test
+                    self.notificationSend()
+                    
+                }
+                else if error != nil {
+                    print("error occurred")
+                }
+            })
+        }
+        else
+        {
+            lblTimeRemain.text = "Far..";
+            self.ref.child("Orders/\(UserDefaults.standard.string(forKey: "OrderId") ?? "")/status").setValue("READY")
+            UserDefaults.standard.set("READY", forKey: "Status")
+        }
+        
+        self.getDetails();
+      
     }
     func calculateDistance(lattude:Double,longt:Double) -> Int{
         
@@ -103,6 +154,47 @@ class ShowDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         
             return Int(distanceInMeters)
         }
+    
+    
+    func notificationSend() {
+       let content = UNMutableNotificationContent()
+        
+       
+        content.title = "Customer Arrived..!"
+        content.sound = .default
+        content.body = "Please continue the Delivery for Order ID : \(UserDefaults.standard.string(forKey: "OrderId") ?? "000")"
+
+        let targetDate = Date().addingTimeInterval(10)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second],
+                                                                                                  from: targetDate),
+                                                    repeats: false)
+
+        let request = UNNotificationRequest(identifier: "some_long_id", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+            if error != nil {
+                print("something went wrong")
+            }
+        })
+    }
+    /*
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions:
+                        [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+       // Override point for customization after application launch.
+            
+       // Fetch data once an hour.
+       UIApplication.shared.setMinimumBackgroundFetchInterval(5)
+
+       // Other initialization…
+       return true
+    }
+        
+    func application(_ application: UIApplication,
+                     performFetchWithCompletionHandler completionHandler:
+                     @escaping (UIBackgroundFetchResult) -> Void) {
+       // Check for location
+        getLocation();
+    }*/
     /*
     // MARK: - Navigation
 

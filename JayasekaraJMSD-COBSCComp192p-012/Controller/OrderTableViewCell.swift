@@ -23,17 +23,19 @@ class OrderTableViewCell: UITableViewCell {
         if(count == 0)
         {
             self.ref.child("Orders/\(sender.tag)/status").setValue("PREPARATION")
+            UserDefaults.standard.set("PREPARATION", forKey: "Status")
             count = count + 1;
         }
         else if(count == 1)
         {
             self.ref.child("Orders/\(sender.tag)/status").setValue("READY")
+            UserDefaults.standard.set("READY", forKey: "Status")
             count = count + 1;
         }
-        else if(count == 2)
+        else if("ARRIVING" == UserDefaults.standard.string(forKey: "Status"))
         {
             self.ref.child("Orders/\(sender.tag)/status").setValue("DONE")
-            count = 0;
+            UserDefaults.standard.set("DONE", forKey: "Status")
         }
         
     }

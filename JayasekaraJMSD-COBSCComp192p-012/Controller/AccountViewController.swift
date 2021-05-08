@@ -92,7 +92,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
                 printController.showsNumberOfCopies = false
                     
                 let formatter = UIMarkupTextPrintFormatter(markupText: text)
-                //formatter.contentInsets = UIEdgeInsets(top: 72, left: 72, bottom: 72, right: 72)
                 printController.printFormatter = formatter
                 
                 printController.present(animated: true, completionHandler: nil)
@@ -100,6 +99,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func btnMenuClick(_ sender: Any) {
         print("Menu....!")
+        UserDefaults.standard.set(false, forKey: "Login")
+        self.performSegue(withIdentifier: "AccountToLogin", sender: nil)
     }
     
     @IBAction func btnSearchClick(_ sender: Any) {
@@ -119,6 +120,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     func getReciptDetails(){
         recipts.removeAll();
+        self.total = 0.0;
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY/MM/dd"
         var d1=dateFormatter.string(from: dateTimepic.date);
@@ -127,7 +129,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
             (snapshot) in
             if let data = snapshot.value {
                 if let orders = data as? [String: Any]{
-                    self.recipts.removeAll()
+                    self.recipts.removeAll();
+                    self.total = 0.0;
                     for order in orders {
                         if let OrderInfo = order.value as? [String: Any]{
                             print(d1);
@@ -135,7 +138,11 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
                             self.recipts.append(Recipt(id: OrderInfo["orderId"] as? String, date:  OrderInfo["date"] as? String, food: OrderInfo["foodName"] as? String, price: OrderInfo["price"] as? Double, total: OrderInfo["price"] as? Double))
                                 let tot =  OrderInfo["price"] as? Double;
                                 self.total = self.total + (tot ?? 0) ;
-                                self.lblTotal.text = String(self.total)
+                                self.lblTotal.text = "Rs. \(self.total as! Double)"
+                            }
+                            else{
+                                self.total = 0.0;
+                                self.lblTotal.text = "Rs. 0.00"
                             }
                                     }
                                 }

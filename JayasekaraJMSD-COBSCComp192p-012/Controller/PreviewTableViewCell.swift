@@ -6,9 +6,9 @@
 //
 
 import UIKit
-
+import Firebase
 class PreviewTableViewCell: UITableViewCell {
-    
+    var ref = Database.database().reference()
     @IBOutlet weak var imgViewFood: UIImageView!
     
     @IBOutlet weak var lblFoodName: UILabel!
@@ -23,7 +23,15 @@ class PreviewTableViewCell: UITableViewCell {
         // Initialization code
     }
     @IBAction func btnClickSwitch(_ sender: UISwitch) {
-        
+        print(switchActive.isOn);
+        print(sender.tag);
+        if(switchActive.isOn){
+            self.ref.child("Foods/\(sender.tag)/cellActive").setValue(true);
+        }
+        else
+        {
+                self.ref.child("Foods/\(sender.tag)/cellActive").setValue(false);
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

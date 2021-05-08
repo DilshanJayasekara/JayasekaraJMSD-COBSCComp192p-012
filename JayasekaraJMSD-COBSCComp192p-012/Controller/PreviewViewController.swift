@@ -17,18 +17,16 @@ struct MenuItem{
     var category:String
     var discount:Int
     var cellActive:Bool
-    func getJSON() -> NSMutableDictionary {
-           let dict = NSMutableDictionary()
-           dict.setValue(id, forKey: "id")
-           dict.setValue(name, forKey: "name")
-            dict.setValue(description, forKey: "description")
-            dict.setValue(price, forKey: "price")
-            dict.setValue(image, forKey: "image")
-            dict.setValue(category, forKey: "category")
-            dict.setValue(discount, forKey: "discount")
-            dict.setValue(cellActive, forKey: "cellActive")
-           return dict
-       }
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case description
+        case price
+        case image
+        case category
+        case discount
+        case cellActive
+    }
 }
 
 struct GroupMenuItems{
@@ -85,26 +83,18 @@ class PreviewViewController: UIViewController,UITableViewDataSource, UITableView
         if let url = URL(string: self.groupMenuItems[indexPath.section].item[indexPath.row].image ) {
             previewCell.imgViewFood.af_setImage(withURL: url)
                         }
-       // previewCell.lblFoodName.text = fooddem[indexPath.section].foodName
-        //names[indexPath.section].[indexPath.row];
-            
+        previewCell.switchActive.tag = Int(groupMenuItems[indexPath.section].item[indexPath.row].id) ?? 0;
+        previewCell.switchActive.isOn = groupMenuItems[indexPath.section].item[indexPath.row].cellActive
         return previewCell;
     }
     
     func getFoodDetails(){
-        
-        
-     //  var dat = MenuItem(name: "Food 01", desc: "This is food", price: 400, img: "test", category: "Category 1", discount: 5, sellType: true)
-
-    //  self.ref.child("MenuItem").child("300").setValue(dat.getJSON())
-        
-           menuItem.removeAll()
-           groupMenuItems.removeAll()
         ref.child("Foods").observe(.value, with:{
             (snapshot) in
             if let data = snapshot.value {
                 if let foodItems = data as? [String: Any]{
-                   
+                    self.menuItem.removeAll()
+                    self.groupMenuItems.removeAll()
                     for itemInfo in foodItems {
                         if let val = itemInfo.value as? [String: Any]{
                             let item = MenuItem(id: val["id"] as! String,name: val["name"] as! String, description: val["description"] as! String, price: val["price"] as! Double, image: val["image"] as! String, category: val["category"] as! String, discount: val["discount"] as! Int, cellActive: val["cellActive"] as! Bool)
